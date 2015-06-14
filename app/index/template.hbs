@@ -3,16 +3,19 @@
 {{display-window url=url bm=newBookmark update='saveBmIfSaved'}}
 
 {{#each bookmarks as |bookmark|}}
-  <div class="row">
-    <div class="col-xs-2">
-      {{#if bookmark.imgUrl}}
-        <img class='img-responsive' src="{{bookmark.imgUrl}}" alt="sock image preview">
-      {{/if}}
+  {{#unless bookmark.isNew}}
+    <div class="row">
+      <div class="col-xs-2">
+        {{#if bookmark.imgUrl}}
+          <img class='img-responsive' src="{{bookmark.imgUrl}}" alt="sock image preview">
+        {{/if}}
+      </div>
+      <div class="col-xs-10">
+        <h2>{{bookmark.title}}</h2>
+        <h4>{{bookmark.desc}}</h4>
+        <a href='#' {{action 'deleteBm' bookmark}}>delete</a>
+      </div>
     </div>
-    <div class="col-xs-10">
-      <h2>{{bookmark.title}}</h2>
-      <h4>{{bookmark.desc}}</h4>
-    </div>
-  </div>
+  {{/unless}}
 {{/each}}
 

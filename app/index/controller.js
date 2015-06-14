@@ -12,6 +12,9 @@ export default Ember.Controller.extend({
       if (bookmark.get('dirtyType') === 'updated') {
         bookmark.save();
       }
+    },
+    deleteBm: function(bookmark) {
+      bookmark.destroyRecord();
     }
   }
 });
