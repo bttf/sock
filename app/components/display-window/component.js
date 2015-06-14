@@ -22,7 +22,7 @@ export default Ember.Component.extend({
       self.set('bm.title', data.title);
       self.set('bm.desc', data.desc);
       self.set('bm.imgUrl', data.imgUrl);
-      self.sendAction('update', self.get('bm'));
+      self.sendAction('onFetched', self.get('bm'));
     });
   }),
 });

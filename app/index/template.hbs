@@ -1,6 +1,6 @@
 {{main-input sendUrl='sendUrl' saveBm='saveBm' bm=newBookmark}}
 
-{{display-window url=url bm=newBookmark update='saveBmIfSaved'}}
+{{display-window url=url bm=newBookmark onFetched='saveBmIfSaved'}}
 
 {{#each bookmarks as |bookmark|}}
   {{#unless bookmark.isNew}}

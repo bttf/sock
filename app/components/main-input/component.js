@@ -4,18 +4,18 @@ export default Ember.Component.extend({
   classNames: ['main-input'],
   lookupTimeouts: [],
   keyUp: function(e) {
-    console.log("test", e.keyCode);
     var self = this;
     var arr = this.get('lookupTimeouts');
     var input = this.get('bm.url');
+    var returnKey = 13;
+
     var lookupFn = function() {
       if (isUrl(input)) {
         self.sendAction('sendUrl', input);
       }
     };
 
-    if (e.keyCode === 13) {
-      console.log('test?');
+    if (e.keyCode === returnKey) {
       this.sendAction('saveBm', this.get('bm'));
     }
 
