@@ -11,7 +11,9 @@ var app = new EmberApp();
 // environments, specify an object as the first parameter. That
 // object's keys should be the environment name and the values
 // should be the asset to use in that environment.
-//
+app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+app.import('bower_components/bootstrap/dist/css/bootstrap-theme.css');
+
 // If the library that you are including contains AMD or ES6
 // modules that you would like to import into your application
 // please specify an object with the list of modules as keys
