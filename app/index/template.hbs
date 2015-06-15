@@ -4,20 +4,22 @@
 
 {{#each bookmarks as |bookmark|}}
   {{#unless bookmark.isNew}}
-    <div class="row">
-      <div class="col-xs-2">
+
+  <div class="bookmark">
+    <div class="bookmark-img">
         {{#if bookmark.imgUrl}}
           <img class='img-responsive' src="{{bookmark.imgUrl}}" alt="sock image preview">
         {{/if}}
-      </div>
-      <div class="col-xs-10">
-        <h2>{{bookmark.title}}</h2>
-        <h4>{{bookmark.desc}}</h4>
-        <a href='{{bookmark.url}}' target="_blank">{{bookmark.url}}</a>
-        <br>
-        <a href='#' {{action 'deleteBm' bookmark}}>delete</a>
-      </div>
     </div>
+
+    <div class="bookmark-info">
+      <h3>{{bookmark.title}}</h3>
+      <h5>{{bookmark.desc}}</h5>
+      <a class='bookmark-link' href='{{bookmark.url}}'>{{bookmark.url}}</a>
+      <a class='bookmark-delete' href='#' {{action 'deleteBm' bookmark}}>{{fa-icon 'close'}}</a>
+    </div>
+  </div>
+
   {{/unless}}
 {{/each}}
 
