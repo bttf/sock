@@ -23,32 +23,25 @@ html, body {
 }
 
 .bookmark {
-  margin: 1em;
+  padding: 0.5em;
+  display: inline-block;
+  width: 84%;
 
-  .bookmark-img {
-    display: inline-block;
-    height: 100%;
-    width: 15%;
-    img {
-      max-height: 50px;
-      margin: 0 auto;
-    }
+  img {
+    max-width: 16px;
+    max-height: 16px;
+    vertical-align: baseline;
+    margin-right: 8px;
   }
 
-  .bookmark-info {
-    padding: 1em;
-    display: inline-block;
-    width: 84%;
+  h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    font-weight: 300;
+  }
 
-    h3 {
-      margin-top: 0;
-      font-size: 1.2em;
-      font-weight: 300;
-    }
-
-    h5 {
-      font-size: 1em;
-      font-weight: 300;
-    }
+  h5 {
+    font-size: 1em;
+    font-weight: 300;
   }
 }

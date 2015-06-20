@@ -1,25 +1,8 @@
-{{main-input sendUrl='sendUrl' saveBm='saveBm' bm=newBookmark}}
-
-{{display-window url=url bm=newBookmark onFetched='saveBmIfSaved'}}
+{{main-input saveBm='saveBm' bm=newBookmark isSaving=bmIsSaving}}
 
 {{#each bookmarks as |bookmark|}}
   {{#unless bookmark.isNew}}
-
-  <div class="bookmark">
-    <div class="bookmark-img">
-        {{#if bookmark.imgUrl}}
-          <img class='img-responsive' src="{{bookmark.imgUrl}}" alt="sock image preview">
-        {{/if}}
-    </div>
-
-    <div class="bookmark-info">
-      <h3>{{bookmark.title}}</h3>
-      <h5>{{bookmark.desc}}</h5>
-      <a class='bookmark-link' href='{{bookmark.url}}'>{{bookmark.url}}</a>
-      <a class='bookmark-delete' href='#' {{action 'deleteBm' bookmark}}>{{fa-icon 'close'}}</a>
-    </div>
-  </div>
-
+    {{bookmark-listing bookmark=bookmark delete='deleteBm'}}
   {{/unless}}
 {{/each}}
 
