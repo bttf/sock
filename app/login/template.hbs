@@ -4,6 +4,7 @@
 
 <div class="row login-bullets">
   <div class="col-md-6">
+
     <div class="bullet">
       <div class="lock-icon">
         {{fa-icon 'lock'}}
@@ -24,12 +25,21 @@
 
   </div>
   <div class="col-md-6">
+
     <div class="login-form">
       <h3>Sign up for <strong>free</strong></h3>
-      <input id="loginEmail" class="form-control" type="text" placeholder="E-mail">
-      <input id="loginPassword" class="form-control" type="password" placeholder="Password">
-      <input id="loginConfirm" class="form-control" type="password" placeholder="Confirm Password">
-      <button class="btn btn-default" type="button">Submit</button>
+      <form>
+        {{input id="loginEmail" class="form-control" type="text" placeholder="E-mail" value=formEmail}}
+        {{input id="loginPassword" class="form-control" type="password" placeholder="Password" value=formPassword}}
+        {{input id="loginConfirm" class="form-control" type="password" placeholder="Confirm Password" value=formConfirm}}
+        <button class="btn btn-default" type="submit" {{action 'signUp' formEmail formPassword formConfirm}}>Submit</button>
+        {{#if passwordMismatch}}
+        <div class="text-danger">
+          Passwords do not match.
+        </div>
+        {{/if}}
+      </form>
     </div>
+
   </div>
 </div>
