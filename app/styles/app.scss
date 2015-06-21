@@ -1,3 +1,5 @@
+@import '_login';
+
 html, body {
   font-size: 100%;
   padding-top: 3em;
@@ -35,24 +37,5 @@ html, body {
     max-height: 16px;
     vertical-align: baseline;
     margin-right: 8px;
-  }
-}
-
-.login-header h1{
-  color: #777;
-  font-weight: 300;
-}
-
-.login-cool-pics {
-  display: inline-block;
-  margin-top: 3em;
-  div {
-    float: left;
-    max-width: 150px;
-    margin: 0 4em;
-    text-align: left;
-    svg {
-      min-width: 150px;
-    }
   }
 }
