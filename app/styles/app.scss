@@ -12,6 +12,29 @@ html, body {
 
   h1 {
     margin: 0;
+    display: inline-block;
+    font-size: 48px;
+    small {
+      font-weight: 300;
+    }
+  }
+
+  .app-login {
+    float: right;
+    font-weight: 300;
+    input, button {
+      display: inline;
+      vertical-align: text-top;
+    }
+    input {
+      display: inline;
+      max-width: 150px;
+    }
+
+    a {
+      color: #777;
+      font-size: 0.75em;
+    }
   }
 }
 
