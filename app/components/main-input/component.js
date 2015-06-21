@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   lookupTimeouts: [],
 
   keyUp: function(e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && isUrl(this.get('bm.url'))) {
       this.sendAction('saveBm', this.get('bm'));
     }
   }
