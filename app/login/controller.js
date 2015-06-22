@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from 'sock/config/environment';
 
 export default Ember.Controller.extend({
   passwordMismatch: false,
@@ -7,16 +8,36 @@ export default Ember.Controller.extend({
     signUp: function(email, password, confirm) {
       if (password === confirm) {
         this.set('passwordMismatch', false);
-        this.sendAction('createUserRequest', email, password);
+        this.send('createUserRequest', email, password);
       } else {
         this.set('passwordMismatch', true);
       }
     },
 
     createUserRequest: function(email, password) {
-      // send ajax
-      // on success, redirect to profile page?
-      // on failure, report failure
+      var self = this;
+      $.ajax({
+        url: ENV.footAPI + '/users',
+        type: 'POST',
+        data: {
+          email: email,
+          password: password
+        }
+      }).done(function (data) {
+        console.log('recevied data', data);
+        self.get('session').authenticate('authenticator:foot', {
+          email: email,
+          password: password
+        }).then(function() {
+          console.log('transitioning?');
+          this.transitionToRoute('account');
+        }, function(err) {
+          console.log('ERROR transitioning?', err);
+          this.transitionToRoute('error', err);
+        });
+      }).fail(function (err) {
+        console.error('error w/ users ajax call', err);
+      });
     }
   }
 });
