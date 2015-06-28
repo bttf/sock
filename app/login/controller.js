@@ -24,19 +24,12 @@ export default Ember.Controller.extend({
           password: password
         }
       }).done(function (data) {
-        console.log('recevied data', data);
-        self.get('session').authenticate('authenticator:foot', {
-          email: email,
-          password: password
-        }).then(function() {
-          console.log('transitioning?');
-          this.transitionToRoute('account');
-        }, function(err) {
-          console.log('ERROR transitioning?', err);
-          this.transitionToRoute('error', err);
-        });
+        // yeah - apparently this is necessary
+        setTimeout(function() {
+          self.send('login', email, password);
+        }, 1000);
       }).fail(function (err) {
-        console.error('error w/ users ajax call', err);
+        console.error(err);
       });
     }
   }
