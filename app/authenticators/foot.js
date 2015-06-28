@@ -14,11 +14,10 @@ export default Base.extend({
       $.ajax({
         url: ENV.footAPI + '/auth',
         type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
+        data: {
           email: options.email,
           password: options.password
-        })
+        }
       }).done(function(response) {
         resolve({ token: response.token });
       }).fail(function(xhr, status, err) {

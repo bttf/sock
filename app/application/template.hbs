@@ -5,14 +5,17 @@
       <small>never lose your shit again</small>
     </h1>
 
-    <div class="app-login">
-      <input class="form-control" type="text" placeholder="E-mail">
-      <input class="form-control" type="password" placeholder="Password">
-      <button type="button" class="btn btn-default">Login</button>
-      <div>
-        <a href="#">Forgot your password?</a>
+    {{#unless session.isAuthenticated}}
+      <div class="app-login">
+        {{input class="form-control" type="text" placeholder="E-mail" value=loginEmail}}
+        {{input class="form-control" type="password" placeholder="Password" value=loginPassword}}
+        <button type="button" class="btn btn-default" {{action 'login' loginEmail loginPassword}}>Login</button>
+        <div>
+          <a href="#">Forgot your password?</a>
+        </div>
       </div>
-    </div>
+    {{/unless}}
+
   </div>
 </div>
 
