@@ -3,9 +3,12 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function() {
+    var self = this;
     return Ember.RSVP.hash({
-      bookmarks: this.store.find('bookmark'),
-      newBookmark: this.store.createRecord('bookmark')
+      newBookmark: this.store.createRecord('bookmark'),
+      bookmarks: this.store.find('user', this.get('session.secure.id')).then(function (user) {
+        return user.get('bookmarks');
+      })
     });
   },
 

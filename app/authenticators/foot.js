@@ -7,7 +7,6 @@ var $ = Ember.$;
 export default Base.extend({
   restore(data) {
     return new Ember.RSVP.Promise(function (resolve, reject) {
-      console.log('hey there', data);
       $.ajax({
         url: ENV.footAPI + '/auth/validate',
         type: 'POST',

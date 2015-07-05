@@ -6,17 +6,25 @@
     </h1>
 
     {{#unless session.isAuthenticated}}
+
       <div class="app-login">
-        {{input class="form-control" type="text" placeholder="E-mail" value=loginEmail}}
-        {{input class="form-control" type="password" placeholder="Password" value=loginPassword}}
-        <button type="button" class="btn btn-default" {{action 'login' loginEmail loginPassword}}>Login</button>
+        <form>
+          {{input class="form-control" type="text" placeholder="E-mail" value=loginEmail}}
+          {{input class="form-control" type="password" placeholder="Password" value=loginPassword}}
+          <button type="submit" class="btn btn-default" {{action 'login' loginEmail loginPassword}}>Login</button>
+        </form>
         <div>
           <a href="#">Forgot your password?</a>
         </div>
       </div>
+
     {{else}}
+
+    <div class="user-panel">
       <strong>{{session.secure.email}}</strong>
       <a href="#" {{action 'logout'}}>Logout</a>
+    </div>
+
     {{/unless}}
 
   </div>
