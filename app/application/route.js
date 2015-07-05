@@ -8,6 +8,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
         email: email,
         password: password
       });
+    },
+
+    logout: function() {
+      this.get('session').invalidate('authenticator:foot');
     }
   }
 });

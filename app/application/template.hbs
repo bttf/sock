@@ -14,6 +14,9 @@
           <a href="#">Forgot your password?</a>
         </div>
       </div>
+    {{else}}
+      <strong>{{session.secure.email}}</strong>
+      <a href="#" {{action 'logout'}}>Logout</a>
     {{/unless}}
 
   </div>

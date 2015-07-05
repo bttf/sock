@@ -24,10 +24,7 @@ export default Ember.Controller.extend({
           password: password
         }
       }).done(function (data) {
-        // yeah - apparently this is necessary
-        setTimeout(function() {
-          self.send('login', email, password);
-        }, 1000);
+        self.send('login', email, password);
       }).fail(function (err) {
         console.error(err);
       });
