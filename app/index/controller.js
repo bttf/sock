@@ -7,14 +7,12 @@ export default Ember.Controller.extend({
     saveBm: function(bookmark) {
       var self = this;
       self.store.find('user', self.get('session.secure.id')).then(function (user) {
-        bookmark.set('user', user);
-        console.log('test', user.get('bookmarks.length'));
         self.set('bmIsSaving', true);
-        bookmark.save().then(function() {
-          user.save();
-          bookmark.reload();
+        bookmark.set('user', user);
+        bookmark.save().then(function (bookmark) {
           self.send('flushBm');
           self.set('bmIsSaving', false);
+          self.get('bookmarks').unshiftObject(bookmark);
         });
       });
     },
