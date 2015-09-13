@@ -45,7 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.footAPI = 'http://sock.88mph.io';
   }
 
   return ENV;
