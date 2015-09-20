@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import ENV from 'sock/config/environment';
 
+var $ = Ember.$;
+
 export default Ember.Controller.extend({
   passwordMismatch: false,
 
@@ -23,7 +25,7 @@ export default Ember.Controller.extend({
           email: email,
           password: password
         }
-      }).done(function (data) {
+      }).done(function () {
         self.send('login', email, password);
       }).fail(function (err) {
         console.error(err);
