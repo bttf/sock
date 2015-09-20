@@ -34,9 +34,9 @@
         {{input id="loginConfirm" class="form-control" type="password" placeholder="Confirm Password" value=formConfirm}}
         <button class="btn btn-default" type="submit" {{action 'signUp' formEmail formPassword formConfirm}}>Submit</button>
         {{#if passwordMismatch}}
-        <div class="text-danger">
-          Passwords do not match.
-        </div>
+          <div class="text-danger">
+            Passwords do not match.
+          </div>
         {{/if}}
       </form>
     </div>

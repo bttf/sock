@@ -6,7 +6,8 @@ export default Ember.Controller.extend({
   actions: {
     saveBm: function(bookmark) {
       var self = this;
-      self.store.find('user', self.get('session.secure.id')).then(function (user) {
+      console.log('session is', this.get('session.secure'));
+      self.store.find('user', self.get('session.secure.id')).then(function(user) {
         self.set('bmIsSaving', true);
         bookmark.set('user', user);
         bookmark.save().then(function (bookmark) {

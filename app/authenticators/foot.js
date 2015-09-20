@@ -31,6 +31,7 @@ export default Base.extend({
           password: options.password
         }
       }).done(function (response) {
+        response.id = response._id;
         resolve(response);
       }).fail(function (xhr, status, err) {
         reject(err);
