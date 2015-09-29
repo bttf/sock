@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
         url: ENV.footAPI + '/search/' + term,
         type: 'GET',
       }).then((response) => {
-        if (this.get('searchResults.length') !== response.bookmarks.length || this.get('searchResults.length') === 0) {
+        if (this.get('searchResults.length') !== response.bookmarks.length || !this.get('searchResults.length')) {
           this.get('searchResults').clear();
           response.bookmarks.forEach((bookmark) => {
             this.get('searchResults').pushObject(bookmark);
