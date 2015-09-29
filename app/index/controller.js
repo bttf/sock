@@ -1,7 +1,11 @@
 import Ember from 'ember';
+import ENV from 'sock/config/environment';
+
+var $ = Ember.$;
 
 export default Ember.Controller.extend({
   bmIsSaving: false,
+  doingASearch: false,
 
   actions: {
     saveBm: function(bookmark) {
@@ -15,6 +19,26 @@ export default Ember.Controller.extend({
           self.get('bookmarks').unshiftObject(bookmark);
         });
       });
+    },
+
+    search: function(term) {
+      this.set('doingASearch', true);
+      $.ajax({
+        url: ENV.footAPI + '/search/' + term,
+        type: 'GET',
+      }).then((response) => {
+        if (this.get('searchResults.length') !== response.bookmarks.length || this.get('searchResults.length') === 0) {
+          this.get('searchResults').clear();
+          response.bookmarks.forEach((bookmark) => {
+            this.get('searchResults').pushObject(bookmark);
+          });
+        }
+      });
+    },
+
+    resetBms() {
+      this.get('searchResults').clear();
+      this.set('doingASearch', false);
     },
 
     deleteBm: function(bookmark) {

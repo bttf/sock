@@ -5,8 +5,21 @@ export default Ember.Component.extend({
   lookupTimeouts: [],
 
   keyUp: function(e) {
-    if (e.keyCode === 13 && isUrl(this.get('bm.url'))) {
-      this.sendAction('saveBm', this.get('bm'));
+    if (e.keyCode === 13) {
+      if (isUrl(this.get('bm.url'))) {
+        this.sendAction('saveBm', this.get('bm'));
+      } else {
+        this.sendAction('search', this.get('bm.url'));
+      }
+    } else {
+      if (!isUrl(this.get('bm.url'))) {
+        var len = this.get('bm.url.length');
+        if (len > 2) {
+          this.sendAction('search', this.get('bm.url'));
+        } else if (!len) {
+          this.sendAction('resetBms');
+        } 
+      }
     }
   }
 });
