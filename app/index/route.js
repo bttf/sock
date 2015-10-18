@@ -5,8 +5,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function() {
     return Ember.RSVP.hash({
       newBookmark: this.store.createRecord('bookmark'),
-      allBookmarks: this.store.find('bookmark', { user: this.get('session.secure.id') }),
-      searchResults: Ember.A(),
+      allBookmarks: this.store.find('bookmark'),
+      searchResults: Ember.A([]),
     });
   },
 
