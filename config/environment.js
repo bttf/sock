@@ -45,7 +45,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.footAPI = 'http://sock.88mph.io';
+    ENV.footAPI = 'http://foot.88mph.io';
+    ENV['simple-auth'].crossOriginWhitelist = ['http://foot.88mph.io'];
   }
 
   return ENV;
