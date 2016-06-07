@@ -12,7 +12,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   setupController: function(controller, model) {
     controller.setProperties(model);
-    controller.set('bookmarks', Ember.computed('doingASearch', () => {
+    controller.set('bookmarks', Ember.computed('doingASearch', 'searchResults', () => {
       if (controller.get('doingASearch')) {
         return model.searchResults;
       } else {

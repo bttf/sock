@@ -22,23 +22,16 @@ export default Ember.Controller.extend({
     },
 
     search: function(term) {
-      this.set('doingASearch', true);
-      $.ajax({
-        url: ENV.footAPI + '/search/' + term,
-        type: 'GET',
-      }).then((response) => {
-        if (this.get('searchResults.length') !== response.bookmarks.length || !this.get('searchResults.length')) {
-          this.get('searchResults').clear();
-          response.bookmarks.forEach((bookmark) => {
-            this.get('searchResults').pushObject(bookmark);
-          });
-        }
-      });
+      this.set('bookmarks', this.get('allBookmarks').filter(bookmark => {
+        const search = term.toLowerCase();
+        const title = bookmark.getWithDefault('title', '').toLowerCase();
+        const url   = bookmark.getWithDefault('url', '').toLowerCase();
+        return title.indexOf(search) > -1 || url.indexOf(search) > -1;
+      }));
     },
 
     resetBms() {
-      this.get('searchResults').clear();
-      this.set('doingASearch', false);
+      this.set('bookmarks', this.get('allBookmarks'));
     },
 
     deleteBm: function(bookmark) {

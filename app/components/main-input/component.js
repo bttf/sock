@@ -14,9 +14,9 @@ export default Ember.Component.extend({
     } else {
       if (!isUrl(this.get('bm.url'))) {
         var len = this.get('bm.url.length');
-        if (len > 2) {
+        if (len > 0) {
           this.sendAction('search', this.get('bm.url'));
-        } else if (!len) {
+        } else {
           this.sendAction('resetBms');
         } 
       }
